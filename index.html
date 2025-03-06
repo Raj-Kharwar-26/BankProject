@@ -1,194 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Swift Bank - Employee Portal</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="data:image/jpeg;base64,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" alt="Swift Bank Logo" class="logo-img">
-                <h1>Swift Bank</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+      <div class="header-content">
+        <div class="logo">
+          <img src="data:image/jpeg;base64,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" alt="Swift Bank Logo" class="logo-img">
+
+          <h1>Swift Bank</h1>
         </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <!-- Login Form -->
-        <div class="auth-container" id="loginForm">
-            <h2>Employee Login</h2>
-            <p class="subtitle">Welcome back! Please login to continue</p>
+      <!-- Login Form -->
+      <div class="auth-container" id="loginForm">
+        <h2>Employee Login</h2>
+        <p class="subtitle">Welcome back! Please login to continue</p>
 
-            <form onsubmit="return handleLogin(event)">
+        <form onsubmit="return handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmployeeId">Employee ID</label>
+            <input type="text" id="loginEmployeeId" required />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-input">
+              <input type="password" id="loginPassword" required />
+              <i
+                class="fas fa-eye-slash toggle-password"
+                onclick="togglePassword('loginPassword', this)"
+              ></i>
+            </div>
+          </div>
+
+          <button type="submit">Login</button>
+          <p class="auth-switch">
+            New employee?
+            <a href="#" onclick="toggleForms('registration')">Register here</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Registration Form -->
+      <div class="auth-container hidden" id="registrationForm">
+        <h2>Employee Registration</h2>
+        <p class="subtitle">Please fill in the details below</p>
+
+        <form id="employeeForm" onsubmit="return handleRegistration(event)">
+          <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" readonly />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" maxlength="50" required />
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" maxlength="50" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input">
+              <input type="password" id="password" maxlength="30" required />
+              <i
+                class="fas fa-eye-slash toggle-password"
+                onclick="togglePassword('password', this)"
+              ></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="password-input">
+              <input
+                type="password"
+                id="confirmPassword"
+                maxlength="30"
+                required
+              />
+              <i
+                class="fas fa-eye-slash toggle-password"
+                onclick="togglePassword('confirmPassword', this)"
+              ></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" maxlength="100" required rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="contactNumber">Contact Number</label>
+            <input
+              type="tel"
+              id="contactNumber"
+              pattern="[0-9]{10}"
+              maxlength="10"
+              required
+            />
+          </div>
+
+          <button type="submit">Register</button>
+          <p class="auth-switch">
+            Already registered?
+            <a href="#" onclick="toggleForms('login')">Login here</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Registration Acknowledgment -->
+      <div class="auth-container hidden" id="acknowledgmentScreen">
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <h2>Employee Registration successful.</h2>
+        </div>
+        <div class="acknowledgment-details">
+          <div class="detail-item">
+            <span class="label">Employee ID:</span>
+            <span id="ackEmployeeId"></span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Name:</span>
+            <span id="ackName"></span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Email:</span>
+            <span id="ackEmail"></span>
+          </div>
+        </div>
+        <button onclick="toggleForms('login')" class="proceed-btn">
+          Proceed to Login
+        </button>
+      </div>
+
+      <!-- Home Page -->
+      <div class="home-container hidden" id="homePage">
+        <div class="welcome-banner">
+          <h1>Welcome to Swift Bank Employee Portal</h1>
+          <p>Welcome, <span id="employeeName"></span>!</p>
+          <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dashboard-card" onclick="showCustomerManagement()">
+            <i class="fas fa-users"></i>
+            <h3>Customer Management</h3>
+            <p>Manage customer information</p>
+          </div>
+          <div class="dashboard-card" onclick="showLoanManagement()">
+            <i class="fas fa-money-bill-wave"></i>
+            <h3>Loan Management</h3>
+            <p>Handle loan requests</p>
+          </div>
+          <!-- <div class="dashboard-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>Documents</h3>
+            <p>Access important files</p>
+          </div> -->
+          <!-- <div class="dashboard-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Performance</h3>
+            <p>Track your progress</p>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Customer Management -->
+      <div class="management-container hidden" id="customerManagement">
+        <div class="section-header">
+          <h2>Customer Management</h2>
+          <button onclick="showNewCustomerForm()" class="action-btn">
+            <i class="fas fa-plus"></i> New Customer
+          </button>
+        </div>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="customerSearch"
+            placeholder="Search by SSN or Name..."
+          />
+          <button onclick="searchCustomers()">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+
+        <div class="data-table">
+          <table id="customerTable">
+            <thead>
+              <tr>
+                <th>SSN</th>
+                <th>Name</th>
+                <th>Account Number</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="customerTableBody">
+              <!-- Customer data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- New Customer Form -->
+        <div class="modal hidden" id="newCustomerModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>New Customer Registration</h3>
+              <span class="close" onclick="closeModal('newCustomerModal')"
+                >&times;</span
+              >
+            </div>
+            <form
+              id="newCustomerForm"
+              onsubmit="return handleNewCustomer(event)"
+            >
+              <div class="form-row">
                 <div class="form-group">
-                    <label for="loginEmployeeId">Employee ID</label>
-                    <input type="text" id="loginEmployeeId" required>
+                  <label for="customerSSN">SSN ID</label>
+                  <input
+                    type="text"
+                    id="customerSSN"
+                    required
+                    pattern="\d{9}"
+                    maxlength="9"
+                  />
                 </div>
-
                 <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <div class="password-input">
-                        <input type="password" id="loginPassword" required>
-                        <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('loginPassword', this)"></i>
-                    </div>
+                  <label for="customerName">Full Name</label>
+                  <input type="text" id="customerName" required />
                 </div>
+              </div>
 
-                <button type="submit">Login</button>
-                <p class="auth-switch">New employee? <a href="#" onclick="toggleForms('registration')">Register here</a></p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="accountNumber">Account Number</label>
+                  <input type="text" id="accountNumber" readonly />
+                </div>
+                <div class="form-group">
+                  <label for="ifscCode">IFSC Code</label>
+                  <input
+                    type="text"
+                    id="ifscCode"
+                    required
+                    pattern="[A-Z]{4}0[A-Z0-9]{6}"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="accountBalance">Initial Balance</label>
+                <input
+                  type="number"
+                  id="accountBalance"
+                  required
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="aadharCard">Aadhar Card No.</label>
+                  <input
+                    type="text"
+                    id="aadharCard"
+                    required
+                    pattern="\d{12}"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="panCard">PAN Card No.</label>
+                  <input
+                    type="text"
+                    id="panCard"
+                    required
+                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="dateOfBirth">Date of Birth</label>
+                  <input type="date" id="dateOfBirth" required />
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="maritalStatus">Marital Status</label>
+                  <select id="maritalStatus" required>
+                    <option value="">Select Status</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="customerEmail">Email</label>
+                  <input type="email" id="customerEmail" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="customerAddress">Address</label>
+                <textarea id="customerAddress" required rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input
+                  type="tel"
+                  id="contactNumber"
+                  required
+                  pattern="\d{10}"
+                />
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  onclick="closeModal('newCustomerModal')"
+                  class="secondary-btn"
+                >
+                  Cancel
+                </button>
+                <button type="submit">Register Customer</button>
+              </div>
             </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loan Management -->
+      <div class="management-container hidden" id="loanManagement">
+        <div class="section-header">
+          <h2>Loan Management</h2>
         </div>
 
-        <!-- Registration Form -->
-        <div class="auth-container hidden" id="registrationForm">
-            <h2>Employee Registration</h2>
-            <p class="subtitle">Please fill in the details below</p>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="loanSearch"
+            placeholder="Search by SSN or Loan ID..."
+          />
+          <button onclick="searchLoans()">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
 
-            <form id="employeeForm" onsubmit="return handleRegistration(event)">
+        <div class="data-table">
+          <table id="loanTable">
+            <thead>
+              <tr>
+                <th>Loan ID</th>
+                <th>Customer Name</th>
+                <th>Amount</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="loanTableBody">
+              <!-- Loan data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Loan Action Modal -->
+        <div class="modal hidden" id="loanActionModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Loan Management</h3>
+              <span class="close" onclick="closeModal('loanActionModal')"
+                >&times;</span
+              >
+            </div>
+            <div class="loan-actions">
+              <button onclick="showNewLoanForm()" class="action-btn">
+                <i class="fas fa-plus"></i> Apply for New Loan
+              </button>
+              <button onclick="showUpdateLoanForm()" class="action-btn">
+                <i class="fas fa-edit"></i> Update Existing Loan
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Loan Form -->
+        <div class="modal hidden" id="newLoanModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>New Loan Application</h3>
+              <span class="close" onclick="closeModal('newLoanModal')"
+                >&times;</span
+              >
+            </div>
+            <form id="newLoanForm" onsubmit="return handleNewLoan(event)">
+              <div class="form-row">
                 <div class="form-group">
-                    <label for="employeeId">Employee ID</label>
-                    <input type="text" id="employeeId" readonly>
+                  <label for="loanCustomerSSN">Customer SSN</label>
+                  <input
+                    type="text"
+                    id="loanCustomerSSN"
+                    required
+                    pattern="\d{9}"
+                  />
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" maxlength="50" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" maxlength="50" required>
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                  <label for="loanCustomerName">Customer Name</label>
+                  <input type="text" id="loanCustomerName" required />
                 </div>
+              </div>
 
+              <div class="form-row">
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-input">
-                        <input type="password" id="password" maxlength="30" required>
-                        <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('password', this)"></i>
-                    </div>
+                  <label for="occupation">Occupation</label>
+                  <input type="text" id="occupation" required />
                 </div>
-
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <div class="password-input">
-                        <input type="password" id="confirmPassword" maxlength="30" required>
-                        <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('confirmPassword', this)"></i>
-                    </div>
+                  <label for="employerName">Employer Name</label>
+                  <input type="text" id="employerName" required />
                 </div>
+              </div>
 
+              <div class="form-group">
+                <label for="employerAddress">Employer Address</label>
+                <textarea id="employerAddress" required rows="3"></textarea>
+              </div>
+
+              <div class="form-row">
                 <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea id="address" maxlength="100" required rows="3"></textarea>
+                  <label for="loanAmount">Loan Amount</label>
+                  <input type="number" id="loanAmount" required min="1000" />
                 </div>
-
                 <div class="form-group">
-                    <label for="contactNumber">Contact Number</label>
-                    <input type="tel" id="contactNumber" pattern="[0-9]{10}" maxlength="10" required>
+                  <label for="loanDuration">Duration (Months)</label>
+                  <input
+                    type="number"
+                    id="loanDuration"
+                    required
+                    min="6"
+                    max="360"
+                  />
                 </div>
+              </div>
 
-                <button type="submit">Register</button>
-                <p class="auth-switch">Already registered? <a href="#" onclick="toggleForms('login')">Login here</a></p>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  onclick="closeModal('newLoanModal')"
+                  class="secondary-btn"
+                >
+                  Cancel
+                </button>
+                <button type="submit">Submit Application</button>
+              </div>
             </form>
+          </div>
         </div>
 
-        <!-- Registration Acknowledgment -->
-        <div class="auth-container hidden" id="acknowledgmentScreen">
-            <div class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h2>Employee Registration successful.</h2>
+        <!-- Loan Search Modal -->
+        <div class="modal hidden" id="loanSearchModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Search Loan</h3>
+              <span class="close" onclick="closeModal('loanSearchModal')"
+                >&times;</span
+              >
             </div>
-            <div class="acknowledgment-details">
-                <div class="detail-item">
-                    <span class="label">Employee ID:</span>
-                    <span id="ackEmployeeId"></span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Name:</span>
-                    <span id="ackName"></span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Email:</span>
-                    <span id="ackEmail"></span>
-                </div>
+            <div class="form-group">
+              <label for="searchLoanId">Enter Loan ID or Customer SSN</label>
+              <input type="text" id="searchLoanId" required />
             </div>
-            <button onclick="toggleForms('login')" class="proceed-btn">Proceed to Login</button>
+            <div class="form-actions">
+              <button
+                type="button"
+                onclick="closeModal('loanSearchModal')"
+                class="secondary-btn"
+              >
+                Cancel
+              </button>
+              <button onclick="searchAndEditLoan()">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transaction Management -->
+      <div class="management-container hidden" id="transactionManagement">
+        <div class="section-header">
+          <h2>Transaction Management</h2>
+          <button onclick="showNewTransactionForm()" class="action-btn">
+            <i class="fas fa-plus"></i> New Transaction
+          </button>
         </div>
 
-        <!-- Home Page -->
-        <div class="home-container hidden" id="homePage">
-            <div class="welcome-banner">
-                <h1>Welcome to Swift Bank Employee Portal</h1>
-                <p>Welcome, <span id="employeeName"></span>!</p>
-                <button onclick="logout()" class="logout-btn">Logout</button>
-            </div>
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Employee Directory</h3>
-                    <p>Connect with your colleagues</p>
-                </div>
-                <div class="dashboard-card">
-                    <i class="fas fa-calendar"></i>
-                    <h3>Schedule</h3>
-                    <p>View your work calendar</p>
-                </div>
-                <div class="dashboard-card">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Documents</h3>
-                    <p>Access important files</p>
-                </div>
-                <div class="dashboard-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Performance</h3>
-                    <p>Track your progress</p>
-                </div>
-            </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="transactionSearch"
+            placeholder="Search by Transaction ID or Customer SSN..."
+          />
+          <button onclick="searchTransactions()">
+            <i class="fas fa-search"></i> Search
+          </button>
         </div>
+
+        <div class="data-table">
+          <table id="transactionTable">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Customer Name</th>
+                <th>Account ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="transactionTableBody">
+              <!-- Transaction data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- New Transaction Form -->
+        <div class="modal hidden" id="newTransactionModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>New Transaction</h3>
+              <span class="close" onclick="closeModal('newTransactionModal')">&times;</span>
+            </div>
+            <form id="newTransactionForm" onsubmit="return handleNewTransaction(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="transactionCustomerSSN">Customer SSN</label>
+                  <input type="text" id="transactionCustomerSSN" required pattern="\d{9}" />
+                </div>
+                <div class="form-group">
+                  <label for="transactionCustomerName">Customer Name</label>
+                  <input type="text" id="transactionCustomerName" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="transactionAccountId">Account ID</label>
+                  <input type="text" id="transactionAccountId" required />
+                </div>
+                <div class="form-group">
+                  <label for="transactionType">Transaction Type</label>
+                  <select id="transactionType" required>
+                    <option value="">Select Type</option>
+                    <option value="credit">Credit</option>
+                    <option value="debit">Debit</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="transactionAmount">Amount</label>
+                  <input type="number" id="transactionAmount" required min="1" step="0.01" />
+                </div>
+                <div class="form-group">
+                  <label for="transactionDate">Date</label>
+                  <input type="date" id="transactionDate" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="transactionDescription">Description</label>
+                <textarea id="transactionDescription" rows="3" required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" onclick="closeModal('newTransactionModal')" class="secondary-btn">
+                  Cancel
+                </button>
+                <button type="submit">Process Transaction</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Swift Bank</h3>
-                <p>Your Trusted Banking Partner</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: contact@swiftbank.com</p>
-                <p>Phone: 1-800-SWIFT-BANK</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Swift Bank</h3>
+          <p>Your Trusted Banking Partner</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Swift Bank. All rights reserved.</p>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: contact@swiftbank.com</p>
+          <p>Phone: 1-800-SWIFT-BANK</p>
         </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Swift Bank. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
